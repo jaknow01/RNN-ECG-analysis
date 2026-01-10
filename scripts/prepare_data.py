@@ -25,7 +25,7 @@ def preproces_baseline_forest(df: pd.DataFrame):
     X = df.drop('type', axis = 1)
     Y = df['type']
 
-    X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.2, random_state=42)
+    X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.2, random_state=42, stratify=Y)
 
     ros = SMOTE()
     X_train_resampled, Y_train_resampled = ros.fit_resample(X_train, y_train)
